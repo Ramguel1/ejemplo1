@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PRODUCTOS</title>
+    <link rel="stylesheet" href="../02crud/assets/css/bootstrap.min.css">
+</head>
+<style>
+    body {
+        background-color: #078585;
+        
+
+    }
+</style>
+
+<body onload="cargarProductos()" >
+    <nav class="navbar" style="background-color: #078585;">
+        <div class="container-fluid text-center">
+            <h1 class="navbar-brand m-auto text-dark">OTRO(CRUD)</h1>
+        </div>
+    </nav>
+
+    <div class="container-fluid">
+        <div class="card text-center">
+            <div class="card-header">
+                <h1>PRODUCTOS (CRUD) </h1>
+            </div>
+            <div class="card-body">
+                <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#agregarR"> Agregar</h3></button>
+                <table class="table table-info  m-75 w-100 mt-4">
+                    <tr>
+                        <td>ID</td>
+                        <td>Nombre</td>
+                        <td>Precio</td>
+                        <td>Cantidad</td>
+                        <td>Proovedor</td>
+                        <td>Unidad(kg/ml)</td>
+                        <td>Categoria</td>
+                        <td>DEL/EDIT</td>
+                        <td></td>
+                    </tr>
+                    <tbody id="listaProductos">
+
+                    </tbody>
+                </table>
+            </div>
+            <div class="card-footer text-body-secondary">
+                RAMGUEL
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="agregarR" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5 w-100 m-auto" id="exampleModalLabel">
+                        <center>Productos</center>
+                    </h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body text-center">
+                    <div class="mb-3">
+
+                        <input type="text" id="nombre" class="form-control text-center w-50 m-auto"
+                            placeholder="Nombre">
+                    </div>
+                    <div class="mb-3">
+
+                        <input type="text" id="precio" class="form-control text-center w-50 m-auto"
+                            placeholder="Precio">
+                    </div>
+                    <div class="mb-3">
+
+                        <input type="text" id="cantidad" class="form-control text-center w-50 m-auto"
+                            placeholder="Cantidad">
+                    </div>
+                    <div class="mb-3">
+
+                        <input type="text" id="proovedor" class="form-control text-center w-50 m-auto"
+                            placeholder="Proovedor">
+                    </div>
+                    <div class="mb-3">
+
+                        <input type="text" id="unidad" class="form-control text-center w-50 m-auto"
+                            placeholder="unidad (kg/ml)">
+                    </div>
+                    <div class="mb-3">
+                        <input type="text" id="categoria" class="form-control text-center w-50 m-auto"
+                            placeholder="Categoria">
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" id="borrar" class="btn btn-dark" data-bs-dismiss="modal"> Cancelar</button>
+                    <button type="button" id="guardar" class="btn btn-primary" data-bs-dismiss="modal"
+                        aria-label="close">
+                        Guardar
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="modal fade" id="actualizar" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5 w-100 m-auto" id="exampleModalLabel">Editar Productos</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <center>
+                        <label for="nombre">
+                            <h5> Nombre:</h5>
+                        </label>
+                        <input type="text" id="nombre1" class="form-control text-center w-50 m-auto">
+                        <label for="ap">
+                            <h5> Precio:</h5>
+                        </label>
+                        <input type="text" id="precio1" class="form-control text-center w-50 m-auto">
+                        <label for="am">
+                            <h5> Cantidad:</h5>
+                        </label>
+                        <input type="text" id="cantidad1" class="form-control text-center w-50 m-auto">
+                        <label for="telefono">
+                            <h5> Proovedor:</h5>
+                        </label>
+                        <input type="text" id="proovedor1" class="form-control text-center w-50 m-auto">
+                        <label for="telefono">
+                            <h5> Unidad de Medida (kg o ml):</h5>
+                        </label>
+                        <input type="text" id="unidad1" class="form-control text-center w-50 m-auto">
+                        <label for="telefono">
+                            <h5> Categoria:</h5>
+                        </label>
+                        <input type="text" id="categoria1" class="form-control text-center w-50 m-auto">
+                </div>
+                </center>
+                <div class="modal-footer">
+                    <input type="hidden" id="id">
+                    <button type="button" id="borrar" class="btn btn-dark" data-bs-dismiss="modal"> Cancelar</button>
+                    <button type="button" class="btn btn-primary" data-bs-dismiss="modal"
+                        onclick="actualizarProducto()">
+                        Actualizar
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="../02crud/assets/js/bootstrap.min.js"></script>
+    <script src="../02crud/assets/js/sweetalert2.all.min.js"></script>
+    <script src="../02crud/assets/js/app.js"></script>
+</body>
+
+</html>
